@@ -1,0 +1,27 @@
+language: r
+sudo: false
+cache: packages
+matrix:
+  include:
+  - os: linux
+    dist: trusty
+    sudo: required
+    env: DRAT_DEPLOY=true
+  - os: osx
+    osx_image: xcode9.2
+  - os: osx
+    osx_image: xcode7.3
+    r_build_args: "--no-build-vignettes"
+    r_check_args: "--ignore-vignettes --no-examples"
+r_packages:
+- knitr
+- covr
+- drat
+after_success:
+- R -q -e 'library("covr");codecov()'
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && test
+  $DRAT_DEPLOY == "true" && bash drat.sh
+- R -q -e "travisci::restart_last_build('cloudyr/awspack')"
+env:
+  global:
+    secure: hcNZH6aCEbgJ2ziIRICqvm1w5Hs90uxJcxAdwyh4dsWm/g/ZUr1rAdHf5P/eWpF1pWZJT+UQVJqMCWiAKNgpajn2qDtWAdd7PfCLeQ+xcqjF9nNzRv30uI5C0676l8S/CI90febh7/y4GF+vCcVep998NcJaXAas0Mujd+CMZ80TWNSpDsoEs3sxm0IwuCFmN2tPr2aTx+PBx6lVSJ8fAmzQ9J3L4Lh6yQx9hhkIcsaINOJb1TUEGpOMrsLmJp1TPw1WYNNf7Pd4OyADeIBhCXDZ8uQMcj8uI7aC8yDHUxOC0NXLbmp7/1Ht5F/797wI8DB+sULkQdapUkPrRtxtNe3GwTAdOQ/tGVf9qeyyaMqd8TIyOB2uSZIgbUqOhJl+Y4g+C41PmA509hmzHKdVTRTGGcSloS/vTQ2r5xhW5fkfxRQL6VKOpj9Tl4EsdbcNyRS6Zfcaubh5yfDs10W0CHX1YMpMXUGRWPqh4cmruO6jcRX2PcAOixTjxZ04q4s/OGXuyNSfF6IguBKWzCbDYVVJ3gXkocePGxHJQZz4iD/w6dmgyabqUfSkRKEAm6mZqg1rsvptrGtFsDORsQcK+bizKK7KClbJgSisbxO+CpZXi9gMzuoNgLxevJlCY6euara5TinAFVXyZSoyrwryAXEmnmUUAnfU9NEqoF5BO4o=

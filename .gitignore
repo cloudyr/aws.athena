@@ -1,0 +1,17 @@
+.Renviron
+.Rproj.user
+.Rhistory
+.RData
+*.Rproj
+README.html
+/inst/doc/*.log
+/vignettes/*.log
+/vignettes/*.aux
+/vignettes/*.pdf
+/vignettes/*.sty
+/vignettes/*.tex
+/vignettes/*.out
+/vignettes/*.blg
+/vignettes/figure/
+/vignettes/*.bib.bak
+/revdep/
