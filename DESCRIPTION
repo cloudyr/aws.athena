@@ -3,9 +3,10 @@ Type: Package
 Title: 'AWS Athena' Client Package
 Version: 0.1.1
 Date: 2018-08-17
-Authors@R: c(person("Thomas J.", "Leeper", role = c("aut", "cre"),
+Authors@R: c(person("Thomas J.", "Leeper", role = c("aut"),
                     email = "thosjleeper@gmail.com",
                     comment = c(ORCID = "0000-0003-4097-6326")))
+Maintainer: ORPHANED
 Description: Client package for 'AWS Athena' <https://aws.amazon.com/athena/>, an interactive query service that makes it easy to analyze data in 'Amazon S3' using standard 'SQL'.
 License: GPL (>= 2)
 URL: https://github.com/cloudyr/aws.athena
